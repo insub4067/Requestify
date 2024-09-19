@@ -49,10 +49,9 @@ public extension Requestify {
         return builder
     }
     
-    func setApiLog(_ printLog: Bool = true, printResponse: Bool = true) -> Requestify {
+    func setPrintLog(_ printLog: Bool = true) -> Requestify {
         var builder = self
         builder.printLog = printLog
-        builder.printResponse = printResponse
         return builder
     }
 

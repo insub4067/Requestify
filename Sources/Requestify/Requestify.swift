@@ -55,6 +55,12 @@ public extension Requestify {
         builder.printResponse = printResponse
         return builder
     }
+
+    func setPrintResponse(_ printResponse: Bool = true) -> Requestify {
+        var builder = self
+        builder.printResponse = printResponse
+        return builder
+    }
     
     func addObject<T: Encodable>(_ object: T, withName name: String) -> Requestify {
         var builder = self

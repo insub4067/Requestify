@@ -23,7 +23,7 @@ import Requestify
 let requestify = Requestify()
     .setURL("https://jsonplaceholder.typicode.com/posts")
     .setMethod(.get)
-    .setApiLog(printLog: true, printResponse: true)
+    .setPrintLog(true)
 ```
 
 ### Sending a Request
@@ -62,7 +62,7 @@ let requestify = Requestify()
     .setMethod(.post)
     .setHeaders(customHeaders)
     .setParameters(parameters)
-    .setApiLog(printLog: true, printResponse: true)
+    .setPrintResponse(false)
 ```
 
 ### Handling Raw HTTP Responses
@@ -90,7 +90,7 @@ let requestify = Requestify()
     .setMethod(.post)
     .addObject(post, withName: "post")
     .addImages([UIImage(named: "example")], withName: "file")
-    .setApiLog(printLog: true, printResponse: true)
+    .setPrintResponse(false)
 
 Task {
     do {

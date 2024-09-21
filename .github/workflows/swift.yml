@@ -7,20 +7,13 @@ on:
   push:
     branches:
       - main
-      - develop
 
 jobs:
   test-ios:
     runs-on: macos-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Xcode
-      uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: '14.0' # Specify the Xcode version, if required
+    steps:    
+    - uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: swift package resolve

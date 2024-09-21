@@ -71,7 +71,12 @@ public extension Requestify {
     }
     
     #if canImport(UIKit)
-    func addImages(_ images: [UIImage?], withName name: String, compressionQuality: CGFloat = 0.8) -> Requestify {
+    func addImages(
+        _ images: [UIImage?],
+        withName name: String,
+        fileName: String = "image.jpg",
+        compressionQuality: CGFloat = 0.8
+    ) -> Requestify {
         var builder = self
         builder.formDataBuilders.append { multipartFormData in
             images
@@ -80,7 +85,7 @@ public extension Requestify {
                     multipartFormData.append(
                         data,
                         withName: name,
-                        fileName: "image.jpg",
+                        fileName: fileName,
                         mimeType: "image/jpeg"
                     )
                 }
@@ -127,7 +132,7 @@ public extension Requestify {
             )
             .response { response in
                 if printLog {
-                    printApiLog(response)
+                    printApiLog(response, printResponse: self.printResponse)
                 }
                 guard let response = response.response else {
                     continuation.resume(throwing: RequestifyError.responseNotFound)

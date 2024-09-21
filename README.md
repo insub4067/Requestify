@@ -103,7 +103,8 @@ Task {
 ```
 
 ### Logging
-You can control the request and response logging using setApiLog:
+You can control the request and response logging using setPrintLog and setPrintResponse:
 ```swift
-.setApiLog(printLog: true, printResponse: false)
+.setPrintLog(true)
+.setPrintResponse(false)
 ```

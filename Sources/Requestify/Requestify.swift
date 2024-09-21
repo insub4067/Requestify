@@ -109,7 +109,7 @@ public extension Requestify {
             )
             .responseDecodable(of: R.self) { response in
                 if printLog {
-                    printApiLog(response, printResponse: self.printResponse)
+                    printApiLog(response, object: object, printResponse: self.printResponse)
                 }
                 switch response.result {
                 case .success(let result):
@@ -132,7 +132,7 @@ public extension Requestify {
             )
             .response { response in
                 if printLog {
-                    printApiLog(response, printResponse: self.printResponse)
+                    printApiLog(response, object: object, printResponse: self.printResponse)
                 }
                 guard let response = response.response else {
                     continuation.resume(throwing: RequestifyError.responseNotFound)
@@ -158,7 +158,7 @@ public extension Requestify {
             )
             .responseDecodable(of: R.self) { response in
                 if printLog {
-                    printApiLog(response, object: object)
+                    printApiLog(response, object: object, printResponse: self.printResponse)
                 }
                 switch response.result {
                 case .success(let result):
@@ -184,7 +184,7 @@ public extension Requestify {
             )
             .response { response in
                 if printLog {
-                    printApiLog(response, object: object)
+                    printApiLog(response, object: object, printResponse: self.printResponse)
                 }
                 guard let response = response.response else {
                     continuation.resume(throwing: RequestifyError.responseNotFound)

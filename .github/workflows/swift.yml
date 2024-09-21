@@ -24,16 +24,9 @@ jobs:
     - name: Install Dependencies
       run: swift package resolve
 
-    # List available simulators (optional debug step)
-    - name: List available iOS simulators
-      run: xcrun simctl list devices
-
     # Run tests on iPhone 14 Simulator with iOS 16.0
     - name: Run Tests on iPhone 14 Simulator (iOS 16.0)
       run: |
         xcodebuild test \
           -scheme 'Requestify'
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
-          -sdk iphonesimulator \
-          -configuration Debug \
-          ONLY_ACTIVE_ARCH=NO
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0'

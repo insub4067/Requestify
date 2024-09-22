@@ -10,6 +10,30 @@ import XCTest
 
 class ParamsTests: XCTestCase {
     
+    func testAddDuplicateKey() {
+        let parameters = Params()
+            .add("username", value: "user123")
+            .add("username", value: "newUser123")
+            .build()
+        
+        XCTAssertEqual(parameters["username"] as? String, "newUser123", "The 'username' parameter should be updated with 'newUser123'")
+    }
+    
+    func testAddEmptyKey() {
+        let parameters = Params()
+            .add("", value: "emptyKey")
+            .build()
+        
+        XCTAssertNil(parameters[""], "The empty key should not be added to the parameters.")
+    }
+    
+    func testBuildEmptyParameters() {
+        let builder = Params()
+        let parameters = builder.build()
+        
+        XCTAssertTrue(parameters.isEmpty, "The parameters dictionary should be empty.")
+    }
+    
     func testAddSingleParameter() {
         let parameters = Params()
             .add("username", value: "user123")

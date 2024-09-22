@@ -121,7 +121,7 @@ public extension Requestify {
         }
     }
     
-    @discardableResult func requeust() async throws -> HTTPURLResponse {
+    @discardableResult func request() async throws -> HTTPURLResponse {
         try await withCheckedThrowingContinuation { continuation in
             AF.request(
                 self.urlString,

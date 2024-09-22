@@ -15,14 +15,18 @@ public struct Params {
 
     public func add(_ key: String, value: Any) -> Params {
         var builder = self
-        builder.parameters[key] = value
+        if !key.isEmpty {
+            builder.parameters[key] = value
+        }
         return builder
     }
 
     public func add(_ params: [String: Any]) -> Params {
         var builder = self
         for (key, value) in params {
-            builder.parameters[key] = value
+            if !key.isEmpty {
+                builder.parameters[key] = value
+            }
         }
         return builder
     }
